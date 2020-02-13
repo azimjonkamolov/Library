@@ -54,8 +54,8 @@
                 <div class="clearfix"></div>
                 <br/>
 
-
             </div>
+
         </form>
     </section>
 
@@ -65,46 +65,45 @@
 
     
     
-    if(isset($_POST['submit']))
+if(isset($_POST['submit']))
+{
+    session_start();
+    $con = new mysqli("localhost", "root", "", "library");
+    
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM student_register WHERE username = '$username' AND password = '$password'";
+
+    $result = mysqli_query($con, $sql);
+
+    $check = mysqli_num_rows($result);
+
+    if($check)
     {
-        session_start();
-        $con = new mysqli("localhost", "root", "", "library");
-        
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-
-        $sql = "SELECT * FROM student_register WHERE username = '$username' AND password = '$password'";
-
-        $result = mysqli_query($con, $sql);
-
-        $check = mysqli_num_rows($result);
-
-        if($check)
-        {
-            ?>
-                <div class="alert alert-danger col-lg-6 col-lg-push-3">
-                    <strong style="color:white">Valid</strong> Username Or Password.
-                </div>
-            <?php
-
-            header("location: plain_page.php");
-            exit;
-        }
-        else
-        {
-            ?>
+        ?>
             <div class="alert alert-danger col-lg-6 col-lg-push-3">
-                <strong style="color:white">Invalid</strong> Username Or Password.
+                <strong style="color:white">Valid</strong> Username Or Password.
             </div>
-            <?php
-        }
+        <?php
 
+        header("location: userpage.php");
+        exit;
     }
-    
-    
-    
-?>
+    else
+    {
+        ?>
+        <div class="alert alert-danger col-lg-6 col-lg-push-3">
+            <strong style="color:white">Invalid</strong> Username Or Password.
+        </div>
+        <?php
+    }
 
+}
+
+
+
+?>
 
 
 
