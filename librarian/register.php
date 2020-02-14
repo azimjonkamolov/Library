@@ -1,3 +1,7 @@
+<?php
+    include "db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@
 
             <section class="login_content" style="margin-top: -40px;">
                 <form name="form1" action="" method="post">
-                    <h2>User Registration Form</h2><br>
+                    <h2>Librarian Registration Form</h2><br>
 
                     <div>
                         <input type="text" class="form-control" placeholder="FirstName" name="firstname" required=""/>
@@ -45,7 +49,7 @@
                         <input type="text" class="form-control" placeholder="Email" name="email" required=""/>
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="Ehone" name="phone" required=""/>
+                        <input type="text" class="form-control" placeholder="Phone" name="phone" required=""/>
                     </div>
                     <div>
                         <input type="password" class="form-control" placeholder="Password" name="password" required=""/>
@@ -60,9 +64,7 @@
 
                     <?php
 
-                        session_start();
-                        $con = new mysqli("localhost", "root", "", "library");
-                        
+                        session_start();                     
 
                         if(isset($_POST["submit"]))
                         {
@@ -79,32 +81,30 @@
                             if ($password == $conpass)
                             {
 
-                                $sql = "INSERT INTO librarian_register (firstname, lastname, username, email, phone, password)
-                                VALUES('$firstname', '$lastname', '$username', '$email', '$phone', '$password')";
+                                $sql = "INSERT INTO librarian_register (firstname, lastname, username, email, phone, password, status)
+                                VALUES('$firstname', '$lastname', '$username', '$email', '$phone', '$password', 'no')";
 
                                 mysqli_query($con, $sql);
 
-                                header("location: register.php");
-                                exit;
-
                                 ?>
                                 
-                                <div class="alert alert-success col-lg-12 col-lg-push-0">
-                                    Registration went successfully!
-                                    Wait for the confirmation of the main admin
-                                    Please!
-                                </div>
+                                <script type="text/javascript">
+                                    alert("Registration went successfully! Wait for the confirmation of the main admin Please!")
+                                </script>
 
                                 <?php
+
+                                header("location: login.php");
+                                exit;
 
                             }
                             else
                             {
                                 ?>
                                     
-                                    <div class="alert alert-danger col-lg-6 col-lg-push-3">
-                                        Check the password please!
-                                    </div>
+                                    <script type="text/javascript">
+                                        alert("Check the password please! Confiramation of an admin is needed before signing in as a librarian!");
+                                    </script>
 
                                 <?php
                             }

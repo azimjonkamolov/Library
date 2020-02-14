@@ -8,8 +8,8 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="land/img/favicon.png" rel="icon">
+  <link href="land/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -18,14 +18,14 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="land/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="land/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="land/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="land/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="land/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="land/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: NewBiz
@@ -46,7 +46,7 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
+        <a href="#intro" class="scrollto"><img src="land/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
@@ -68,14 +68,14 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="img/intro-img.svg" alt="" class="img-fluid">
+        <img src="land/img/intro-img.svg" alt="" class="img-fluid">
       </div>
 
       <div class="intro-info">
         <h2>We provide<br><span>essential books </span><br>for your better study!</h2>
         <div>
-          <a href="../student/login.php" class="btn-services scrollto">Student</a>
-          <a href="../librarian/login.php" class="btn-services scrollto">Librarian</a>
+          <a href="student/login.php" class="btn-services scrollto">Student</a>
+          <a href="librarian/login.php" class="btn-services scrollto">Librarian</a>
         </div>
       </div>
 

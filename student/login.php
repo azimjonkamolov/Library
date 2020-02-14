@@ -1,3 +1,7 @@
+<?php
+    include "db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,7 @@
 
     <section class="login_content">
         <form name="form1" action="" method="post">
-            <h1>User Login Form</h1>
+            <h1>Student Login Form</h1>
 
             <div>
                 <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
@@ -68,7 +72,6 @@
 if(isset($_POST['submit']))
 {
     session_start();
-    $con = new mysqli("localhost", "root", "", "library");
     
     $username = $_POST["username"];
     $password = $_POST["password"];

@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include "db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +35,7 @@
 
     <section class="login_content">
         <form name="form1" action="" method="post">
-            <h1>User Login Form</h1>
+            <h1>Librarian Login Form</h1>
 
             <div>
                 <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
@@ -51,6 +56,10 @@
                     <a href="register.php"> Create Account </a>
                 </p>
 
+                <p class="change_link" style="font-weight: bold;">
+                    Newly regestered users need a confirmation from a admin before signing in as a librarian!
+                </p>
+
                 <div class="clearfix"></div>
                 <br/>
 
@@ -62,12 +71,11 @@
 if(isset($_POST['submit']))
 {
     session_start();
-    $con = new mysqli("localhost", "root", "", "library");
     
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM librarian_register WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM librarian_register WHERE username = '$username' AND password = '$password' AND status = 'yes'";
 
     $result = mysqli_query($con, $sql);
 
@@ -75,6 +83,8 @@ if(isset($_POST['submit']))
 
     if($check==1)
     {
+        $_SESSION["librarian"] = $username;
+        
         ?>
             <div class="alert alert-success col-lg-12 col-lg-push-0">
                 <strong style="color:white">Valid</strong> Username Or Password.
@@ -87,9 +97,9 @@ if(isset($_POST['submit']))
     else
     {
         ?>
-        <div class="alert alert-danger col-lg-12 col-lg-push-">
-            <strong style="color:white">Invalid</strong> Username Or Password.
-        </div>
+            <script type="text/javascript">
+                alert("Check the password please! Confiramation of an admin is needed before signing in as a librarian!");
+            </script>
         <?php
     }
 

@@ -1,3 +1,7 @@
+<?php
+    include "db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@
 
             <section class="login_content" style="margin-top: -40px;">
                 <form name="form1" action="" method="post">
-                    <h2>User Registration Form</h2><br>
+                    <h2>Student Registration Form</h2><br>
 
                     <div>
                         <input type="text" class="form-control" placeholder="FirstName" name="firstname" required=""/>
@@ -41,7 +45,7 @@
                         <input type="text" class="form-control" placeholder="Username" name="username" required=""/>
                     </div>
                     <div>
-                        <input type="text" class="form-control" placeholder="address" name="address" required=""/>
+                        <input type="text" class="form-control" placeholder="Student ID" name="student_id" required=""/>
                     </div>
                     <div>
                         <input type="text" class="form-control" placeholder="Email" name="email" required=""/>
@@ -61,9 +65,7 @@
 
                     <?php
 
-                        session_start();
-                        $con = new mysqli("localhost", "root", "", "library");
-                        
+                        session_start();                   
 
                         if(isset($_POST["submit"]))
                         {
@@ -74,19 +76,19 @@
                             $username = $_POST["username"];
                             $email = $_POST["email"];
                             $phone = $_POST["phone"];
-                            $address = $_POST["address"];
+                            $student_id = $_POST["student_id"];
                             $password = $_POST["password"];
                             $conpass = $_POST["conpass"];
 
                             if ($password == $conpass)
                             {
 
-                                $sql = "INSERT INTO student_register (firstname, lastname, username, email, phone, address, password)
-                                VALUES('$firstname', '$lastname', '$username', '$email', '$phone', '$address', '$password')";
+                                $sql = "INSERT INTO student_register (firstname, lastname, username, email, phone, student_id, password)
+                                VALUES('$firstname', '$lastname', '$username', '$email', '$phone', '$student_id', '$password')";
 
                                 mysqli_query($con, $sql);
 
-                                header("location: register.php");
+                                header("location: login.php");
                                 exit;
 
                                 ?>
@@ -102,9 +104,9 @@
                             {
                                 ?>
                                     
-                                    <div class="alert alert-success col-lg-6 col-lg-push-3">
-                                        Check the password please!
-                                    </div>
+                                    <script type="text/javascript">
+                                        alert("Check the password please!");
+                                    </script>
 
                                 <?php
                             }
