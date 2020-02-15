@@ -1,6 +1,15 @@
 <?php
-    session_start();
+
     include "header.php";
+
+    $checknum = $_SESSION["student_id"];
+
+    $sql = "SELECT * FROM student_register WHERE student_id = '$checknum' ";
+    $result = mysqli_query($con, $sql);
+    while($row = mysqli_fetch_array($result))
+    {
+        $name = $row["username"];                                                 
+    }
 ?>
 
         <!-- top navigation -->
@@ -15,7 +24,7 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.png" alt=""> <?php echo $_SESSION["student"]; ?>
+                                <img src="images/img.png" alt=""> <?php echo $name; ?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -42,7 +51,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Plain Page</h3>
+                        <h3>Student's Page</h3>
                     </div>
 
                     <div class="title_right">

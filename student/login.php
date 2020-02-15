@@ -37,7 +37,7 @@
             <h1>Student Login Form</h1>
 
             <div>
-                <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
+                <input type="text" name="student_id" class="form-control" placeholder="Student ID" required=""/>
             </div>
             <div>
                 <input type="password" name="password" class="form-control" placeholder="Password" required=""/>
@@ -73,19 +73,21 @@ if(isset($_POST['submit']))
 {
     session_start();
     
-    $username = $_POST["username"];
+    $student_id = $_POST["student_id"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM student_register WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM student_register WHERE student_id = '$student_id' AND password = '$password'";
 
     $result = mysqli_query($con, $sql);
 
     $check = mysqli_num_rows($result);
 
     if($check)
-    {
+    {   
 
-        $_SESSION["student"] = $username;
+        $_SESSION["student_id"] = $student_id;
+        $_SESSION["username"] = $row['username'];
+        
 
         ?>
             <div class="alert alert-danger col-lg-6 col-lg-push-3">

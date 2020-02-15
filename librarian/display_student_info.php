@@ -52,7 +52,7 @@
                                 <div class="input-group">
                                     <input type="text" name="searchstudent" class="form-control" placeholder="Search for student name or ID" style="border: 1px solid grey ;">
                                     <span class="input-group-btn">
-                                        <input  type="submit" value="Go!" class="btn btn-default" name="submit" style="border: 1px solid rgba(0,0,0, 0.5); border-left:none; border-top-right-radius: 100px; border-bottom-right-radius: 100px;">
+                                        <input  type="submit" value="Go!" class="btn btn-default" name="submit" style="margin-top: 0.5px; border: 1px solid rgba(0,0,0, 0.5); border-left:none; border-top-right-radius: 100px; border-bottom-right-radius: 100px;">
                                     </span>
                                 </div>
                             </div>

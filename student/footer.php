@@ -1,7 +1,7 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Library Management System
+
             </div>
             <div class="clearfix"></div>
         </footer>
