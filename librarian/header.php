@@ -13,11 +13,12 @@
 
     <title>Plain Page | LMS </title>
 
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/nprogress.css" rel="stylesheet">
     <link href="css/custom.min.css" rel="stylesheet">
+
+    
 </head>
 
 <body class="nav-md">
@@ -62,7 +63,7 @@
                                     class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="issue_books.php"><i class="fa fa-table"></i> Issue books <span class="fa fa-chevron-down"></span></a>
 
                             </li>
                             <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span

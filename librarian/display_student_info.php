@@ -69,9 +69,6 @@
 
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
-
-                            <table class="table table-bordered">
 
                                 <?php
 
@@ -82,32 +79,37 @@
 
                                         $sql = "SELECT * FROM student_register WHERE username LIKE '$search_student%'";
                                         $result = mysqli_query($con, $sql);
-                                        echo "<table class='table table-bordered'>";
-                                        echo "<thead>";
-                                            echo "<tr>";
-                                                echo "<th scope='col'>"; echo "#"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Firstname"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Lastname"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Username"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Phone"; echo "</th>";
-                                            echo "<tr>";
-                                        echo "</thead>";
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                            $count_num++;
+                                        echo "<div class='table-responsive'";
+                                            echo "<table class='table table-bordered'>";
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Firstname"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Lastname"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Username"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Phone"; echo "</th>";
+                                                    echo "<tr>";
+                                                echo "</thead>";
+                                                echo "</tbody>";
+                                                while($row = mysqli_fetch_array($result))
+                                                {
+                                                    $count_num++;
 
-                                                echo "<tr>";
-                                                    echo "<th scope='row'>"; echo $count_num; echo "</th>";
-                                                    echo "<td>"; echo $row["firstname"]; echo "</td>";
-                                                    echo "<td>"; echo $row["lastname"]; echo "</td>";
-                                                    echo "<td>"; echo $row["username"]; echo "</td>";
-                                                    echo "<td>"; echo $row["student_id"]; echo "</td>";
-                                                    echo "<td>"; echo $row["email"]; echo "</td>";
-                                                    echo "<td>"; echo $row["phone"]; echo "</td>";
-                                                echo "<tr>";
-                                        }
+                                                        echo "<tr>";
+                                                            echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                            echo "<td>"; echo $row["firstname"]; echo "</td>";
+                                                            echo "<td>"; echo $row["lastname"]; echo "</td>";
+                                                            echo "<td>"; echo $row["username"]; echo "</td>";
+                                                            echo "<td>"; echo $row["student_id"]; echo "</td>";
+                                                            echo "<td>"; echo $row["email"]; echo "</td>";
+                                                            echo "<td>"; echo $row["phone"]; echo "</td>";
+                                                        echo "<tr>";
+                                                }
+                                                echo "</tbody>";
+                                            echo "</table>";
+                                        echo "</div>";
                                     }
                                     else
                                     {
@@ -115,37 +117,38 @@
 
                                         $sql = "SELECT * FROM student_register";
                                         $result = mysqli_query($con, $sql);
-                                        echo "<table class='table table-bordered'>";
-                                        echo "<thead>";
-                                            echo "<tr>";
-                                                echo "<th scope='col'>"; echo "#"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Firstname"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Lastname"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Username"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Phone"; echo "</th>";
-                                            echo "<tr>";
-                                        echo "</thead>";
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                            $count_num++;
+                                        echo "<div class='table-responsive'>";
+                                            echo "<table class='table table-bordered'>";
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Firstname"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Lastname"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Username"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Phone"; echo "</th>";
+                                                    echo "<tr>";
+                                                echo "</thead>";
+                                                echo "</tbody>";
+                                                while($row = mysqli_fetch_array($result))
+                                                {
+                                                    $count_num++;
 
-                                                echo "<tr>";
-                                                    echo "<th scope='row'>"; echo $count_num; echo "</th>";
-                                                    echo "<td>"; echo $row["firstname"]; echo "</td>";
-                                                    echo "<td>"; echo $row["lastname"]; echo "</td>";
-                                                    echo "<td>"; echo $row["username"]; echo "</td>";
-                                                    echo "<td>"; echo $row["student_id"]; echo "</td>";
-                                                    echo "<td>"; echo $row["email"]; echo "</td>";
-                                                    echo "<td>"; echo $row["phone"]; echo "</td>";
-                                                echo "<tr>";
-                                        }
-
+                                                        echo "<tr>";
+                                                            echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                            echo "<td>"; echo $row["firstname"]; echo "</td>";
+                                                            echo "<td>"; echo $row["lastname"]; echo "</td>";
+                                                            echo "<td>"; echo $row["username"]; echo "</td>";
+                                                            echo "<td>"; echo $row["student_id"]; echo "</td>";
+                                                            echo "<td>"; echo $row["email"]; echo "</td>";
+                                                            echo "<td>"; echo $row["phone"]; echo "</td>";
+                                                        echo "<tr>";
+                                                }
+                                                echo "</tbody>";
+                                            echo "</table>";
+                                        echo "</div>";
                                     }
-
-                                    
-
                                 ?>
                             </div>
                         </div>

@@ -69,9 +69,9 @@
 
                                 <div class="clearfix"></div>
                             </div>
-                            <table class="x_content">
+                            <div class="x_content">
 
-                            <table class="table table-bordered">
+                            <!-- <table class="table table-bordered"> -->
 
                                 <?php
 
@@ -83,38 +83,42 @@
 
                                         $sql = "SELECT * FROM books WHERE book_name LIKE '%$search_book%' ";
                                         $result = mysqli_query($con, $sql);
-                                        echo "<div class='table table-bordered'>";
-                                        echo "<thead>";
-                                            echo "<tr>";
-                                                echo "<th scope='col'>"; echo "#"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Purchase date"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's price"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
-                                            echo "<tr>";
-                                        echo "</thead>";
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                            $count_num++;
-
-                                            echo "<tr>";
-                                                echo "<th scope='row'>"; echo $count_num; echo "</th>";
-                                                echo "<td>"; echo $row["book_name"]; echo "</td>";
-                                                echo "<td>"; echo $row["author_name"]; echo "</td>";
-                                                echo "<td>"; echo $row["book_publisher"]; echo "</td>";
-                                                echo "<td>"; echo $row["purchase_date"]; echo "</td>";
-                                                echo "<td>"; echo $row["book_price"]; echo "</td>";
-                                                echo "<td>"; echo $row["book_qty"]; echo "</td>";
-                                                echo "<td>"; echo $row["available_qty"]; echo "</td>";
-                                                echo "<td>"; echo $row["librarian"]; echo "</td>";
-                                                echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100" <?php echo "</td>";
-                                            echo "<tr>";
-                                        }
+                                        echo "<div class='table-responsive'>";
+                                            echo "<table class='table table-bordered'";
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Purchase date"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's price"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
+                                                    echo "<tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
+                                                while($row = mysqli_fetch_array($result))
+                                                {
+                                                    $count_num++;
+                                                    echo "<tr>";
+                                                        echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                        echo "<td>"; echo $row["book_name"]; echo "</td>";
+                                                        echo "<td>"; echo $row["author_name"]; echo "</td>";
+                                                        echo "<td>"; echo $row["book_publisher"]; echo "</td>";
+                                                        echo "<td>"; echo $row["purchase_date"]; echo "</td>";
+                                                        echo "<td>"; echo $row["book_price"]; echo "</td>";
+                                                        echo "<td>"; echo $row["book_qty"]; echo "</td>";
+                                                        echo "<td>"; echo $row["available_qty"]; echo "</td>";
+                                                        echo "<td>"; echo $row["librarian"]; echo "</td>";
+                                                        echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100" <?php echo "</td>";
+                                                    echo "<tr>";                                                   
+                                                }
+                                                echo "</tbody";
+                                            echo "</table>";
+                                        echo "</div>";
 
                                     }
                                     else
@@ -123,39 +127,43 @@
 
                                         $sql = "SELECT * FROM books";
                                         $result = mysqli_query($con, $sql);
-                                        echo "<div class='table table-bordered'>";
-                                        echo "<thead>";
-                                            echo "<tr>";
-                                                echo "<th scope='col'>"; echo "#"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Purchase date"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's price"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
-                                            echo "<tr>";
-                                        echo "</thead>";
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                            $count_num++;
+                                        echo "<div class='table-responsive'>";
+                                            echo "<table class='table table-bordered'>";
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Purchase date"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's price"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
+                                                    echo "<tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
+                                                while($row = mysqli_fetch_array($result))
+                                                {
+                                                    $count_num++;
+                                                        echo "<tr>";
+                                                            echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                            echo "<td>"; echo $row["book_name"]; echo "</td>";
+                                                            echo "<td>"; echo $row["author_name"]; echo "</td>";
+                                                            echo "<td>"; echo $row["book_publisher"]; echo "</td>";
+                                                            echo "<td>"; echo $row["purchase_date"]; echo "</td>";
+                                                            echo "<td>"; echo $row["book_price"]; echo "</td>";
+                                                            echo "<td>"; echo $row["book_qty"]; echo "</td>";
+                                                            echo "<td>"; echo $row["available_qty"]; echo "</td>";
+                                                            echo "<td>"; echo $row["librarian"]; echo "</td>";
+                                                            echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100"> <?php echo "</td>";
+                                                        echo "<tr>";
+                                                }
+                                                echo "</tbody";
+                                            echo "</table>";
+                                        echo "</div>";
 
-                                                echo "<tr>";
-                                                    echo "<th scope='row'>"; echo $count_num; echo "</th>";
-                                                    echo "<td>"; echo $row["book_name"]; echo "</td>";
-                                                    echo "<td>"; echo $row["author_name"]; echo "</td>";
-                                                    echo "<td>"; echo $row["book_publisher"]; echo "</td>";
-                                                    echo "<td>"; echo $row["purchase_date"]; echo "</td>";
-                                                    echo "<td>"; echo $row["book_price"]; echo "</td>";
-                                                    echo "<td>"; echo $row["book_qty"]; echo "</td>";
-                                                    echo "<td>"; echo $row["available_qty"]; echo "</td>";
-                                                    echo "<td>"; echo $row["librarian"]; echo "</td>";
-                                                    echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100"> <?php echo "</td>";
-                                                echo "<tr>";
-                                        }
-                                        echo "</table>";
                                     }
 
                                 ?>
