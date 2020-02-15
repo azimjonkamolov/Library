@@ -84,6 +84,9 @@ if(isset($_POST['submit']))
 
     if($check)
     {
+
+        $_SESSION["student"] = $username;
+
         ?>
             <div class="alert alert-danger col-lg-6 col-lg-push-3">
                 <strong style="color:white">Valid</strong> Username Or Password.

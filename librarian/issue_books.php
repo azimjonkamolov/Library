@@ -1,5 +1,6 @@
 <?php
     session_start();
+    ob_start();
     include "header.php";
     include "db.php";
 ?>
@@ -103,7 +104,7 @@ $("#suggesstion-box").hide();
                             </div>
                             <div class="x_content">
                                 
-                            <!-- <form name="form" action="" method="post" class="col-lg-6"> -->
+                            <form name="form" action="" method="post" class="col-lg-12">
                                     <table class="table table-bordered">
                                         <!-- <div class="frmSearch">
                                             <input type="text" id="search-box" placeholder="Country Name" />
@@ -112,43 +113,90 @@ $("#suggesstion-box").hide();
                                         <tr>    
                                             <div class="frmSearch">
                                                 <td class="frmSearch">
-                                                    <input type="text" id="search-box" placeholder="Book's Name"  class="form-control"/>
+                                                    <input type="text" id="search-box" placeholder="Book's Name" name="book_name"  class="form-control"/>
                                                     <div id="suggesstion-box"></div>
                                                 </td>
                                             </div>   
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control" placeholder="Author's name" name="author_name" required=""></td>
+                                            <td><input type="text" class="form-control" placeholder="Student's ID" name="student_id" required=""></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control" placeholder="Book's publisher" name="book_publisher" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" class="form-control" placeholder="Purchase date" name="purchase_date" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" class="form-control" placeholder="Book's price" name="book_price" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" class="form-control" placeholder="Book's quontity" name="book_qty" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" class="form-control" placeholder="Available quontity" name="available_qty" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" class="form-control" placeholder="User's name" name="user_name" required=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Book's image<input type="file" name="f1" required=""></td>
+                                            <td><input type="text" class="form-control" placeholder="User name" name="user_name" required=""></td>
                                         </tr>
 
-                                        <!-- <tr>
+                                        <?php
+                                            $issue_date =  $date = date('M d, Y');
+                                            $date = strtotime($date);
+                                            $date = strtotime("+14 day", $date);
+                                            $return_date =  date('M d, Y', $date);
+                                        ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control" value="Issue date: <?php echo $issue_date ?>" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" class="form-control" value="Return date: <?php echo $return_date ?>" disabled></td>
+                                        </tr>
+
+                                        <tr>
                                             <td>
-                                                <input type="submit" name="submit" class="btn btn-default submit" value="insert books details" style="background-color: blue; color: white;">
+                                                <input type="submit" name="submit" class="btn btn-default submit" value="Issue Book" style="background-color: blue; color: white;">
                                             </td>
-                                        </tr> -->
+                                        </tr>
                                     </table>
-                                <!-- </form> -->
+                                </form>
+
+                                <?php
+
+                                    if(isset($_POST['submit']))
+                                    {
+                                        $book_name = $_POST['book_name'];
+                                        $student_id = $_POST['student_id'];
+                                        $user_name = $_POST['user_name'];
+                                        $librarian = $_SESSION['librarian'];
+
+                                        $sql_check = "SELECT * FROM student_register WHERE username = '$user_name' AND student_id = '$student_id'";
+
+                                        $result_check = mysqli_query($con, $sql_check);
+
+                                        $check = mysqli_num_rows($result_check);
+
+                                        if($check==1)
+                                        {
+                                            $sql = "INSERT INTO issue_books (book_name, user_name, student_id, librarian, issue_date, return_date) 
+                                            VALUE('$book_name','$user_name','$student_id','$librarian','$issue_date', '$return_date')";
+
+                                            $result = mysqli_query($con, $sql);
+
+                                            if($result == 1)
+                                            {
+
+                                            ?>
+                                            
+                                            <script type="text/javascript">
+                                                alert("Book insertion went successfully!");
+                                            </script>
+
+                                            <?php
+
+                                            header("location: issue_books.php");
+                                            exit;
+                                            ob_flush();
+
+                                        }
+                                    }
+                                        else
+                                        {
+                                            ?>
+                                                <script type="text/javascript">
+                                                    alert("Username or ID does not match!");
+                                                </script>
+                                            <?php
+                                        }
+
+                                    }
+
+                                ?>
 
                             </div>
                         </div>

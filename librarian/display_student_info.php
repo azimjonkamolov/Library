@@ -50,7 +50,7 @@
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
-                                    <input type="text" name="searchstudent" class="form-control" placeholder="Search for student name" style="border: 1px solid grey ;">
+                                    <input type="text" name="searchstudent" class="form-control" placeholder="Search for student name or ID" style="border: 1px solid grey ;">
                                     <span class="input-group-btn">
                                         <input  type="submit" value="Go!" class="btn btn-default" name="submit" style="border: 1px solid rgba(0,0,0, 0.5); border-left:none; border-top-right-radius: 100px; border-bottom-right-radius: 100px;">
                                     </span>
@@ -69,17 +69,20 @@
 
                                 <div class="clearfix"></div>
                             </div>
+                            <div class="x_content"></div>
 
                                 <?php
 
                                     if(isset($_POST['submit']))
                                     {
+                                        echo "<p style='color:transparent;'>Hello</p>";
+
                                         $search_student = $_POST['searchstudent'];
                                         $count_num = 0;
 
-                                        $sql = "SELECT * FROM student_register WHERE username LIKE '$search_student%'";
+                                        $sql = "SELECT * FROM student_register WHERE (username LIKE '$search_student%' or student_id LIKE '$search_student%') ";
                                         $result = mysqli_query($con, $sql);
-                                        echo "<div class='table-responsive'";
+                                        echo "<div class='table-responsive'>";
                                             echo "<table class='table table-bordered'>";
                                                 echo "<thead>";
                                                     echo "<tr>";
@@ -90,9 +93,9 @@
                                                         echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Phone"; echo "</th>";
-                                                    echo "<tr>";
+                                                    echo "</tr>";
                                                 echo "</thead>";
-                                                echo "</tbody>";
+                                                echo "<tbody>";
                                                 while($row = mysqli_fetch_array($result))
                                                 {
                                                     $count_num++;
@@ -105,7 +108,7 @@
                                                             echo "<td>"; echo $row["student_id"]; echo "</td>";
                                                             echo "<td>"; echo $row["email"]; echo "</td>";
                                                             echo "<td>"; echo $row["phone"]; echo "</td>";
-                                                        echo "<tr>";
+                                                        echo "</tr>";
                                                 }
                                                 echo "</tbody>";
                                             echo "</table>";
@@ -113,6 +116,8 @@
                                     }
                                     else
                                     {
+                                        echo "<p style='color:transparent;'>Hello</p>";
+
                                         $count_num = 0;
 
                                         $sql = "SELECT * FROM student_register";
@@ -128,9 +133,9 @@
                                                         echo "<th scope='col'>"; echo "Student ID"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "E-mail"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Phone"; echo "</th>";
-                                                    echo "<tr>";
+                                                    echo "</tr>";
                                                 echo "</thead>";
-                                                echo "</tbody>";
+                                                echo "<tbody>";
                                                 while($row = mysqli_fetch_array($result))
                                                 {
                                                     $count_num++;

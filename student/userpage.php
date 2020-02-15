@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "header.php";
 ?>
 
@@ -14,7 +15,7 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.jpg" alt="">John Doe
+                                <img src="images/img.png" alt=""><?php echo $_SESSION["student"]; ?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">

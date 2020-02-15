@@ -50,7 +50,7 @@
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
-                                    <input type="text" name="searchbook" class="form-control" placeholder="Search for books"  style="border: 1px solid grey ;">
+                                    <input type="text" name="searchbook" class="form-control" placeholder="Search for book or author"  style="border: 1px solid grey ;">
                                     <span class="input-group-btn">
                                     <input  type="submit" value="Go!" class="btn btn-default" name="submit" style="border: 1px solid rgba(0,0,0, 0.5); border-left:none; border-top-right-radius: 100px; border-bottom-right-radius: 100px;">
                                     </span>
@@ -81,7 +81,7 @@
                                         $search_book = $_POST['searchbook'];
                                         $count_num = 0;
 
-                                        $sql = "SELECT * FROM books WHERE book_name LIKE '%$search_book%' ";
+                                        $sql = "SELECT * FROM books WHERE (book_name LIKE '%$search_book%' OR author_name LIKE '%$search_book%') ";
                                         $result = mysqli_query($con, $sql);
                                         echo "<div class='table-responsive'>";
                                             echo "<table class='table table-bordered'";
