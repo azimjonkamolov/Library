@@ -11,11 +11,10 @@
     }
 
     $tot = 0;
-    $sql_num = "SELECT * FROM messages WHERE student_id = '$checknum' AND seen = 1 ";
     
-    $res = mysqli_query($con, $sql_num);
+    $sql_note = "UPDATE messages SET seen = 0  WHERE student_id = '$checknum'";
 
-    $tot = mysqli_num_rows($res);
+    $sql_result = mysqli_query($con, $sql_note);
 
 ?>
 
@@ -35,7 +34,7 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a  href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 
@@ -88,17 +87,19 @@
 
                                 $count_num = 0;
 
-                                $sql = "SELECT * FROM issue_books WHERE student_id = '$checknum' ";
+                                $sql = "SELECT * FROM messages WHERE student_id = '$checknum' ";
                                 $result = mysqli_query($con, $sql);
                                 echo "<div class='table-responsive'>";
                                     echo "<table class='table table-bordered'>";
                                         echo "<thead>";
                                             echo "<tr>";
                                                 echo "<th scope='col'>"; echo "#"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Issued librarian"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Issue date"; echo "</th>";
-                                                echo "<th scope='col'>"; echo "Return date"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "Student's ID"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "User's name"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "Librarian's name"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "Title"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "Message"; echo "</th>";
+                                                echo "<th scope='col'>"; echo "Date"; echo "</th>";
                                             echo "<tr>";
                                         echo "</thead>";
                                         echo "<tbody>";
@@ -107,10 +108,12 @@
                                             $count_num++;
                                                 echo "<tr>";
                                                     echo "<th scope='row'>"; echo $count_num; echo "</th>";
-                                                    echo "<td>"; echo $row["book_name"]; echo "</td>";
+                                                    echo "<td>"; echo $row["student_id"]; echo "</td>";
+                                                    echo "<td>"; echo $row["user_name"]; echo "</td>";
                                                     echo "<td>"; echo $row["librarian"]; echo "</td>";
-                                                    echo "<td>"; echo $row["issue_date"]; echo "</td>";
-                                                    echo "<td>"; echo $row["return_date"]; echo "</td>";
+                                                    echo "<td>"; echo $row["title"]; echo "</td>";
+                                                    echo "<td>"; echo $row["msg"]; echo "</td>";
+                                                    echo "<td>"; echo $row["sent_date"]; echo "</td>";
                                                 echo "<tr>";
                                         }
                                         echo "</tbody";

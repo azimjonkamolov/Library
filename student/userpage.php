@@ -10,6 +10,14 @@
         $name = $row["username"];                                                 
     }
 
+    $tot = 0;
+
+    $sql_num = "SELECT * FROM messages WHERE student_id = '$checknum' AND seen = 1 ";
+    
+    $res = mysqli_query($con, $sql_num);
+
+    $tot = mysqli_num_rows($res);
+
 ?>
 
         <!-- top navigation -->
@@ -28,17 +36,16 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 
                         <li role="presentation" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                            <a href="notifications.php" class="dropdown-toggle info-number" data-toggle="dropdown"
                                aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+                                <span class="badge bg-green"><?php echo $tot; ?></span>
                             </a>
-
                         </li>
                     </ul>
                 </nav>

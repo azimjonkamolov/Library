@@ -29,7 +29,7 @@
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                                aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+                                <span class="badge bg-green"></span>
                             </a>
 
                         </li>
@@ -112,7 +112,7 @@
                                                         echo "<td>"; echo $row["return_date"]; echo "</td>";
                                                         echo "<td>";
                                                         ?> 
-                                                            <a href="return_books.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('Is book returned?');">Return</a> 
+                                                            <a href="return_books.php?id=<?php echo $row["id"]; ?>"  onclick="myFunction()">Return</a> 
                                                         <?php
                                                         echo "</td>";
                                                     echo "<tr>";                                                   
@@ -156,7 +156,7 @@
                                                             echo "<td>"; echo $row["return_date"]; echo "</td>";
                                                             echo "<td>";
                                                                 ?> 
-                                                                    <a href="return_books.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('Is book returned?');">Return</a> 
+                                                                    <a href="return_books.php?id=<?php echo $row["id"]; ?>" onclick="myFunction()">Return</a> 
                                                                 <?php 
                                                             echo "</td>";
                                                         echo "<tr>";
@@ -188,12 +188,20 @@
 
                                         $sql_result = mysqli_query($con, $sql_qty);
 
-                                        header("location: return_books.php");
+                                        header("location: display_books.php");
 
                                         ob_flush();
                                     }
 
                                 ?>
+
+                                <script>
+                                function myFunction()
+                                {
+                                    confirm("Are you sure?");
+                                    location.reload();
+                                }
+                                </script>
                             </div>
                         </div>
                     </div>

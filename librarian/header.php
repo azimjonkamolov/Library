@@ -53,22 +53,23 @@
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                            <li><a href="display_student_info.php"><i class="fa fa-home"></i> All student info <span class="fa fa-chevron-down"></span></a>
-
+                            <li>
+                                <a href="display_student_info.php"><i class="fa fa-home"></i> All student's list <span class="fa fa-chevron-down"></span></a>
                             </li>
-                            <li><a href="display_books.php"><i class="fa fa-edit"></i> Add book info <span class="fa fa-chevron-down"></span></a>
-
+                            <li>
+                                <a href="display_books.php"><i class="fa fa-edit"></i> All book's list <span class="fa fa-chevron-down"></span></a>
                             </li>
-                            <li><a href="add_books.php"><i class="fa fa-desktop"></i> Add books <span
-                                    class="fa fa-chevron-down"></span></a>
-
+                            <li>
+                                <a href="add_books.php"><i class="fa fa-book"></i> Add books <span class="fa fa-chevron-down"></span></a>
                             </li>
-                            <li><a href="issue_books.php"><i class="fa fa-table"></i> Issue books <span class="fa fa-chevron-down"></span></a>
-
+                            <li>
+                                <a href="issue_books.php"><i class="fa fa-table"></i> Issue books <span class="fa fa-chevron-down"></span></a>
                             </li>
-                            <li><a href="return_books.php"><i class="fa fa-bar-chart-o"></i> Return Books <span
-                                    class="fa fa-chevron-down"></span></a>
-
+                            <li>
+                                <a href="return_books.php"><i class="fa fa-bar-chart-o"></i> Return Books <span class="fa fa-chevron-down"></span></a>
+                            </li>
+                            <li>
+                                <a href="messages.php"><i class="fa fa-bar-chart-o"></i> Send message <span class="fa fa-chevron-down"></span></a>
                             </li>
 
                         </ul>

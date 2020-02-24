@@ -69,14 +69,7 @@
                             <li><a href="my_issued_books.php" ><i class="fa fa-edit"></i> My Issued Books <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-desktop"></i> UI Elements <span
-                                    class="fa fa-chevron-down"></span></a>
-
-                            </li>
-                            <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-
-                            </li>
-                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span
+                            <li><a href="notifications.php"><i class="fa fa-desktop"></i> Notifications <span
                                     class="fa fa-chevron-down"></span></a>
 
                             </li>

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    ob_start();
     include "header.php";
     include "db.php";
 ?>
@@ -28,7 +29,7 @@
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                                aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+                                <span class="badge bg-green"></span>
                             </a>
 
                         </li>
@@ -88,6 +89,7 @@
                                                 echo "<thead>";
                                                     echo "<tr>";
                                                         echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
@@ -96,7 +98,7 @@
                                                         echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
-                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Delete the book"; echo "</th>";
                                                     echo "<tr>";
                                                 echo "</thead>";
                                                 echo "<tbody>";
@@ -105,6 +107,7 @@
                                                     $count_num++;
                                                     echo "<tr>";
                                                         echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                        echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100" <?php echo "</td>";
                                                         echo "<td>"; echo $row["book_name"]; echo "</td>";
                                                         echo "<td>"; echo $row["author_name"]; echo "</td>";
                                                         echo "<td>"; echo $row["book_publisher"]; echo "</td>";
@@ -113,7 +116,11 @@
                                                         echo "<td>"; echo $row["book_qty"]; echo "</td>";
                                                         echo "<td>"; echo $row["available_qty"]; echo "</td>";
                                                         echo "<td>"; echo $row["librarian"]; echo "</td>";
-                                                        echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100" <?php echo "</td>";
+                                                        echo "<td>";
+                                                            ?> 
+                                                                <a href="display_books.php?id=<?php echo $row["id"]; ?>" onclick="myFunction()">Delete</a> 
+                                                            <?php 
+                                                        echo "</td>";
                                                     echo "<tr>";                                                   
                                                 }
                                                 echo "</tbody";
@@ -132,6 +139,7 @@
                                                 echo "<thead>";
                                                     echo "<tr>";
                                                         echo "<th scope='col'>"; echo "#"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Books's name"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Author's name"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Publisher"; echo "</th>";
@@ -140,7 +148,7 @@
                                                         echo "<th scope='col'>"; echo "Book's quontitiy"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Available quontitiy"; echo "</th>";
                                                         echo "<th scope='col'>"; echo "Librarian inserted"; echo "</th>";
-                                                        echo "<th scope='col'>"; echo "Book's image"; echo "</th>";
+                                                        echo "<th scope='col'>"; echo "Delete the book"; echo "</th>";
                                                     echo "<tr>";
                                                 echo "</thead>";
                                                 echo "<tbody>";
@@ -149,6 +157,7 @@
                                                     $count_num++;
                                                         echo "<tr>";
                                                             echo "<th scope='row'>"; echo $count_num; echo "</th>";
+                                                            echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100"> <?php echo "</td>";
                                                             echo "<td>"; echo $row["book_name"]; echo "</td>";
                                                             echo "<td>"; echo $row["author_name"]; echo "</td>";
                                                             echo "<td>"; echo $row["book_publisher"]; echo "</td>";
@@ -157,13 +166,30 @@
                                                             echo "<td>"; echo $row["book_qty"]; echo "</td>";
                                                             echo "<td>"; echo $row["available_qty"]; echo "</td>";
                                                             echo "<td>"; echo $row["librarian"]; echo "</td>";
-                                                            echo "<td>"; ?> <img src="<?php echo $row["book_img"]; ?>" height="100" width="100"> <?php echo "</td>";
+                                                            echo "<td>";
+                                                                ?> 
+                                                                    <a href="display_books.php?id=<?php echo $row["id"]; ?>" onclick="myFunction()">Delete</a> 
+                                                                <?php 
+                                                            echo "</td>";
                                                         echo "<tr>";
                                                 }
                                                 echo "</tbody";
                                             echo "</table>";
                                         echo "</div>";
 
+                                    }
+
+                                    if(isset($_GET['id']))
+                                    {
+                                        $delete_id = ($_GET["id"]);
+
+                                        $sql = "DELETE FROM books WHERE id = '$delete_id'";
+
+                                        $result = mysqli_query($con, $sql);
+
+                                        header("location: display_books.php");
+
+                                        ob_flush();
                                     }
 
                                 ?>

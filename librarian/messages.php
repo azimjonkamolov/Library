@@ -2,40 +2,7 @@
     session_start();
     ob_start();
     include "header.php";
-    include "db.php";
 ?>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- jQuery UI library -->
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
-<script>
-$(document).ready(function(){
-	$("#search-box").keyup(function(){
-		$.ajax({
-		type: "POST",
-		url: "search.php",
-		data:'keyword='+$(this).val(),
-		beforeSend: function(){
-			$("#search-box").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
-		},
-		success: function(data){
-			$("#suggesstion-box").show();
-			$("#suggesstion-box").html(data);
-			$("#search-box").css("background","#FFF");
-		}
-		});
-	});
-});
-//To select country name
-function selectCountry(val) {
-$("#search-box").val(val);
-$("#suggesstion-box").hide();
-}
-</script>
 
         <!-- top navigation -->
         <div class="top_nav">
@@ -95,10 +62,10 @@ $("#suggesstion-box").hide();
 
                 <div class="clearfix"></div>
                 <div class="row" style="min-height:500px">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Issue books</h2>
+                                <h2>Send Message To Students</h2>
 
                                 <div class="clearfix"></div>
                             </div>
@@ -110,37 +77,21 @@ $("#suggesstion-box").hide();
                                             <input type="text" id="search-box" placeholder="Country Name" />
                                             <div id="suggesstion-box"></div>
                                         </div> -->
-                                        <tr>    
-                                            <div class="frmSearch">
-                                                <td class="frmSearch">
-                                                    <input type="text" id="search-box" placeholder="Book's Name" name="book_name"  class="form-control"/>
-                                                    <div id="suggesstion-box"></div>
-                                                </td>
-                                            </div>   
-                                        </tr>
                                         <tr>
                                             <td><input type="text" class="form-control" placeholder="Student's ID" name="student_id" required=""></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control" placeholder="User name" name="user_name" required=""></td>
-                                        </tr>
-
-                                        <?php
-                                            $issue_date =  $date = date('M d, Y');
-                                            $date = strtotime($date);
-                                            $date = strtotime("+14 day", $date);
-                                            $return_date =  date('M d, Y', $date);
-                                        ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control" value="Issue date: <?php echo $issue_date ?>" disabled></td>
+                                            <td><input type="text" class="form-control" placeholder="User Name" name="user_name" required=""></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" class="form-control" value="Return date: <?php echo $return_date ?>" disabled></td>
+                                            <td><input type="text" class="form-control" placeholder="Message's Title" name="title" required=""></td>
                                         </tr>
-
+                                        <tr>
+                                            <td><textarea  type="text" class="form-control" placeholder="Write Here" name="message" required="" ></textarea></td>
+                                        </tr>
                                         <tr>
                                             <td>
-                                                <input type="submit" name="submit" class="btn btn-default submit" value="Issue Book" style="background-color: blue; color: white;">
+                                                <input type="submit" name="submit" class="btn btn-default submit" value="Send Message" onclick="return alert('Message is sent!'); style="background-color: blue; color: white;">
                                             </td>
                                         </tr>
                                     </table>
@@ -150,10 +101,14 @@ $("#suggesstion-box").hide();
 
                                     if(isset($_POST['submit']))
                                     {
-                                        $book_name = $_POST['book_name'];
                                         $student_id = $_POST['student_id'];
                                         $user_name = $_POST['user_name'];
+                                        $title = $_POST['title'];
+                                        $message = $_POST['message'];
                                         $librarian = $_SESSION['librarian'];
+
+                                        $sent_date =  $date = date('M d, Y');
+                                        
 
                                         $sql_check = "SELECT * FROM student_register WHERE username = '$user_name' AND student_id = '$student_id'";
 
@@ -163,14 +118,10 @@ $("#suggesstion-box").hide();
 
                                         if($check==1)
                                         {
-                                            $sql = "INSERT INTO issue_books (book_name, user_name, student_id, librarian, issue_date, return_date) 
-                                            VALUE('$book_name','$user_name','$student_id','$librarian','$issue_date', '$return_date')";
-
-                                            $sql_qty = "UPDATE books SET available_qty = available_qty - 1 WHERE book_name = '$book_name' ";
+                                            $sql = "INSERT INTO messages (student_id, user_name, title, msg, librarian, sent_date, seen) 
+                                            VALUE('$student_id','$user_name','$title','$message', '$librarian', '$sent_date', '1')";
 
                                             $result = mysqli_query($con, $sql);
-
-                                            $sql_result = mysqli_query($con, $sql_qty);
 
                                             if($result == 1)
                                             {
@@ -178,12 +129,12 @@ $("#suggesstion-box").hide();
                                             ?>
                                             
                                             <script type="text/javascript">
-                                                alert("Book insertion went successfully!");
+                                                alert("Message is sent!");
                                             </script>
 
                                             <?php
 
-                                            header("location: issue_books.php");
+                                            header("location: messages.php");
                                             exit;
                                             ob_flush();
 
