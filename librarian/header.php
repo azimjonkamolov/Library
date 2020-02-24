@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Plain Page | LMS </title>
+    <title>Library</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -56,17 +56,17 @@
                             <li><a href="display_student_info.php"><i class="fa fa-home"></i> All student info <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a href="add_books.php"><i class="fa fa-edit"></i> Add books <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="display_books.php"><i class="fa fa-edit"></i> Add book info <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a href="display_books.php"><i class="fa fa-desktop"></i> All book info <span
+                            <li><a href="add_books.php"><i class="fa fa-desktop"></i> Add books <span
                                     class="fa fa-chevron-down"></span></a>
 
                             </li>
                             <li><a href="issue_books.php"><i class="fa fa-table"></i> Issue books <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span
+                            <li><a href="return_books.php"><i class="fa fa-bar-chart-o"></i> Return Books <span
                                     class="fa fa-chevron-down"></span></a>
 
                             </li>

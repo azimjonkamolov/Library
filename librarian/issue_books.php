@@ -166,7 +166,11 @@ $("#suggesstion-box").hide();
                                             $sql = "INSERT INTO issue_books (book_name, user_name, student_id, librarian, issue_date, return_date) 
                                             VALUE('$book_name','$user_name','$student_id','$librarian','$issue_date', '$return_date')";
 
+                                            $sql_qty = "UPDATE books SET available_qty = available_qty - 1 WHERE book_name = '$book_name' ";
+
                                             $result = mysqli_query($con, $sql);
+
+                                            $sql_result = mysqli_query($con, $sql_qty);
 
                                             if($result == 1)
                                             {
