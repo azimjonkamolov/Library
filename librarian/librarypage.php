@@ -15,7 +15,7 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.jpg" alt=""> <?php echo $_SESSION["librarian"]; ?>
+                                <img src="images/img.png" alt=""> <?php echo $_SESSION["librarian"]; ?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">

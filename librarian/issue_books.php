@@ -104,7 +104,7 @@ $("#suggesstion-box").hide();
                             </div>
                             <div class="x_content">
                                 
-                            <form name="form" action="" method="post" class="col-lg-12">
+                            <form name="form" action="" method="post" class="col-lg-6">
                                     <table class="table table-bordered">
                                         <!-- <div class="frmSearch">
                                             <input type="text" id="search-box" placeholder="Country Name" />

@@ -51,9 +51,9 @@
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
-                                    <input type="text" name="searchbook" class="form-control" placeholder="Search for book or author"  style="border: 1px solid grey ;">
+                                    <input type="text" name="searchbook" class="form-control" placeholder="Search for book or author">
                                     <span class="input-group-btn">
-                                    <input  type="submit" value="Go!" class="btn btn-default" name="submit" style="margin-top: 0.5px; border: 1px solid rgba(0,0,0, 0.5); border-left:none; border-top-right-radius: 100px; border-bottom-right-radius: 100px;">
+                                    <button class="btn btn-default" type="button"><input type="submit" value="Go" style="border: none; decoration: none; background-color: transparent; margin: 0; padding: 0;"></button>
                                     </span>
                                 </div>
                             </div>

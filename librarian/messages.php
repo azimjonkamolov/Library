@@ -62,7 +62,7 @@
 
                 <div class="clearfix"></div>
                 <div class="row" style="min-height:500px">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Send Message To Students</h2>
@@ -71,7 +71,7 @@
                             </div>
                             <div class="x_content">
                                 
-                            <form name="form" action="" method="post" class="col-lg-12">
+                            <form name="form" action="" method="post" class="col-lg-6">
                                     <table class="table table-bordered">
                                         <!-- <div class="frmSearch">
                                             <input type="text" id="search-box" placeholder="Country Name" />
